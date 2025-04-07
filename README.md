@@ -7,7 +7,15 @@
 
 Changelog front-end to consume a TOTVS Fluig REST API.
 
-## Recommended IDE Setup
+## Objetivos
+
+- Formulário Fluig para os posts
+- Listar posts
+- Mostrar imagens nos posts
+- Formulário de sugestão de melhoria
+- Processo de sugestão de melhorias
+
+## Configurando o ambiente e rodando o projeto
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
