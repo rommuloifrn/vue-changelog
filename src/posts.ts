@@ -2,6 +2,7 @@ import type { Post } from "./post";
 
 export const posts: Post[] = [
     {
+        id:"5",
         titulo: "Integração com API de Pagamentos Finalizada",
         versao: "22.4",
         data_de_postagem: new Date("2025-04-07"),
@@ -14,6 +15,7 @@ Do lado do back-end, atualizamos nossos webhooks para receber notificações ass
 Por fim, corrigimos alguns bugs que afetavam o cálculo de taxas de serviço em compras internacionais. Essa atualização é parte do nosso compromisso contínuo com a estabilidade e segurança das operações financeiras na plataforma.`
     },
     {
+        id:"4",
         titulo: "Melhorias de Performance no Painel Administrativo",
         versao: "22.3",
         data_de_postagem: new Date("2025-04-02"),
@@ -26,6 +28,7 @@ No front-end, reduzimos o carregamento de recursos desnecessários e aplicamos t
 Para garantir a qualidade da entrega, realizamos testes de estresse com mais de 10 mil acessos simultâneos e monitoramos os resultados com ferramentas como New Relic e Datadog. O impacto positivo foi imediato e deve beneficiar todos os administradores que acessam a plataforma diariamente.`
     },
     {
+        id:"3",
         titulo: "Novo Sistema de Autenticação com 2FA",
         versao: "22.2",
         data_de_postagem: new Date("2025-03-25"),
@@ -38,6 +41,7 @@ Além disso, introduzimos um sistema de backup com códigos de recuperação ún
 No back-end, a verificação foi totalmente integrada à nossa API de autenticação, e novos logs foram adicionados para registrar tentativas falhas e alertar o usuário em caso de atividade suspeita. O 2FA estará disponível inicialmente para contas de administradores e, nas próximas semanas, será liberado gradualmente para todos os usuários.`
     },
     {
+        id:"2",
         titulo: "Dashboard de Métricas Atualizado",
         versao: "22.1",
         data_de_postagem: new Date("2025-03-18"),
@@ -52,6 +56,7 @@ Do lado técnico, migramos o sistema de geração de métricas para uma nova arq
 Essa atualização é apenas a primeira etapa de uma série de melhorias planejadas para as ferramentas de análise de dados da plataforma. Agradecemos a todos os usuários que contribuíram com sugestões!`
     },
     {
+        id:"1",
         titulo: "Correção de Erros em Notificações por E-mail",
         versao: "22.0",
         data_de_postagem: new Date("2025-03-10"),
