@@ -3,6 +3,7 @@ import type { Post } from "./post";
 export const posts: Post[] = [
     {
         titulo: "Integração com API de Pagamentos Finalizada",
+        versao: "22.4",
         data_de_postagem: new Date("2025-04-07"),
         conteudo: `Concluímos a integração com a nova API de pagamentos da empresa parceira PayConnect, que substitui a antiga solução utilizada até então. A mudança traz diversos benefícios, incluindo maior estabilidade, processamento de transações mais rápido, além de suporte expandido para múltiplos métodos de pagamento, como cartões de crédito, débito, boleto e Pix.
 
@@ -14,6 +15,7 @@ Por fim, corrigimos alguns bugs que afetavam o cálculo de taxas de serviço em 
     },
     {
         titulo: "Melhorias de Performance no Painel Administrativo",
+        versao: "22.3",
         data_de_postagem: new Date("2025-04-02"),
         conteudo: `Realizamos uma grande atualização de performance no painel administrativo com foco em escalabilidade e redução do tempo de resposta das principais funcionalidades utilizadas por nossos usuários internos e parceiros.
 
@@ -25,6 +27,7 @@ Para garantir a qualidade da entrega, realizamos testes de estresse com mais de 
     },
     {
         titulo: "Novo Sistema de Autenticação com 2FA",
+        versao: "22.2",
         data_de_postagem: new Date("2025-03-25"),
         conteudo: `A segurança das contas dos nossos usuários é uma prioridade, e por isso implementamos um novo sistema de autenticação em duas etapas (2FA). Com essa funcionalidade ativada, mesmo que uma senha seja comprometida, será necessário um segundo fator (como um código gerado por aplicativo autenticador) para acessar a conta.
 
@@ -36,6 +39,7 @@ No back-end, a verificação foi totalmente integrada à nossa API de autentica�
     },
     {
         titulo: "Dashboard de Métricas Atualizado",
+        versao: "22.1",
         data_de_postagem: new Date("2025-03-18"),
         conteudo: `Lançamos uma nova versão do nosso dashboard de métricas, reformulado para oferecer maior clareza, controle e personalização. O novo layout prioriza a visualização de dados em tempo real e a interação do usuário com gráficos e relatórios.
 
@@ -49,6 +53,7 @@ Essa atualização é apenas a primeira etapa de uma série de melhorias planeja
     },
     {
         titulo: "Correção de Erros em Notificações por E-mail",
+        versao: "22.0",
         data_de_postagem: new Date("2025-03-10"),
         conteudo: `Foi identificado e corrigido um problema que impedia o envio de notificações por e-mail para contas criadas após fevereiro. Esse bug estava relacionado a uma falha na configuração de DNS de nossos servidores SMTP secundários, o que ocasionava falhas intermitentes no envio de mensagens transacionais.
 
