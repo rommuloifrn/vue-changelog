@@ -26,12 +26,13 @@ import {posts} from '../posts'
 
   <div class="flex flex-col">
     
-    <div v-on:click="router.push('/'+post.id)" class="mt-4 border border-zinc-200 rounded p-4 bg-white w-[35em] shadow cursor-pointer" v-for="post in posts">
+    <div v-on:click="router.push('/'+post.id)" v-for="post in posts" 
+    class="mt-4 border border-zinc-700 rounded p-4 bg-zinc-800 w-[35em] shadow cursor-pointer" >
       
         <div class="font-semibold text-xl">
           <span class="text-zinc-500">v{{ post.versao }}</span> {{ post.titulo }}
         </div>
-        <div class="pt-2">
+        <div class="pt-2 text-zinc-300">
           {{ truncarPorPalavras(post.conteudo, 20) }}
         </div>
       
