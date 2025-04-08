@@ -27,7 +27,7 @@
 
 
   <div class="flex flex-col">
-    <div class="mt-4 border border-zinc-200 rounded p-4 bg-white w-[35em]" v-for="post in posts">
+    <div class="mt-4 border border-zinc-200 rounded p-4 bg-white w-[35em] shadow" v-for="post in posts">
       <div class="font-semibold text-xl">
         <span class="text-zinc-500">v{{ post.versao }}</span> {{ post.titulo }}
       </div>
