@@ -1,7 +1,10 @@
 export interface Post {
+    documentId: string
+    version: string
+
     id: string
     titulo: string
     versao: string
-    data_de_postagem: Date
+    dataPublicacao: Date
     conteudo: string
 }

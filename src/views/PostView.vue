@@ -31,7 +31,7 @@ import { posts } from '@/posts';
   <div class="flex flex-col">
     <div class="mt-4 p-4  w-[35em]">
       <div class="font-semibold text-xl">
-        <span class="text-zinc-500">v{{ post.versao }}</span> {{ post.titulo }}
+        <span class="text-blue-400">v{{ post.versao }}</span> {{ post.titulo }}
       </div>
       <div class="pt-2 whitespace-pre-line text-zinc-300">
         {{ post.conteudo }}
