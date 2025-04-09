@@ -1,8 +1,8 @@
 <script lang="ts" setup>
   import type { Post } from '@/post';
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-  //import {posts} from '../posts'
+import { usePostListStore } from '@/stores/post_list';
+import { storeToRefs } from 'pinia';
+  import { useRouter } from 'vue-router';
 
   function truncarPorPalavras(texto: string, n: number): string {
     const palavras = texto.trim().split(/\s+/);
@@ -19,7 +19,11 @@ import { useRouter } from 'vue-router';
 
   let conteudo: any = null;
 
-  let posts: Post[] = []
+  let store = usePostListStore()
+
+  let {postList} = storeToRefs(store)
+
+  let posts: Post[] = store.postList
   
   fetch(
     'https://fluighml.rn.sebrae.com.br/fluighub2/rest/service/execute/datasearch',
@@ -34,14 +38,12 @@ import { useRouter } from 'vue-router';
   ).then((response)=>{
     response.json().then((dados)=>{
       let parsed = JSON.parse(dados.message)
-      conteudo = parsed.values
+      let conteudo: Post[] = parsed.values
 
-      posts = conteudo
+      store.setValue(conteudo)
 
-      console.log(conteudo);
+      console.log(store.postList.values);
     })
-    
-    
   })
 
 </script>
@@ -57,7 +59,7 @@ import { useRouter } from 'vue-router';
 
   <div class="flex flex-col">
     
-    <div v-on:click="router.push('/'+post.id)" v-for="post in posts" 
+    <div v-on:click="router.push('/'+post.id)" v-for="post in postList" 
     class="mt-4 border border-zinc-700 rounded p-4 bg-zinc-800 w-[35em] shadow cursor-pointer" >
         <div class="w-full h-[20em] bg-slate-400 mb-4"></div>
         <div class="font-semibold text-xl">
