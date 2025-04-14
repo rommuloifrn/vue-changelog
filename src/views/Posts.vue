@@ -40,9 +40,9 @@ import { storeToRefs } from 'pinia';
       let parsed = JSON.parse(dados.message)
       let conteudo: Post[] = parsed.values
 
-      store.setValue(conteudo)
+      conteudo.reverse()
 
-      console.log(store.postList.values);
+      store.setValue(conteudo)
     })
   })
 
@@ -61,7 +61,8 @@ import { storeToRefs } from 'pinia';
     
     <div v-on:click="router.push('/'+post.id)" v-for="post in postList" 
     class="mt-4 border border-zinc-700 rounded p-4 bg-zinc-800 w-[35em] shadow cursor-pointer" >
-        <div class="w-full h-[20em] bg-slate-400 mb-4"></div>
+        <div ></div>
+        <img class="w-full bg-slate-400 mb-4" v-bind:src="post.capaPublicacaoLink" alt="">
         <div class="font-semibold text-xl">
           <span class="text-blue-400">v{{ post.versao }}</span> {{ post.titulo }}
         </div>

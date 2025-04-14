@@ -6,5 +6,6 @@ export interface Post {
     titulo: string
     versao: string
     dataPublicacao: Date
+    capaPublicacaoLink: string
     conteudo: string
 }
