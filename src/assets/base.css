@@ -4,6 +4,3 @@
 @plugin "flowbite/plugin";
 @source "../../node_modules/flowbite";
 
-body {
-  background-color: rgb(253, 253, 253);
-}
