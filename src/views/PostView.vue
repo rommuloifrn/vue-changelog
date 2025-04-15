@@ -1,6 +1,6 @@
 <script lang="ts" setup>
     import type { Post } from '@/post';
-import { posts } from '@/posts';
+    import { usePostListStore } from '@/stores/post_list';
     import { useRoute } from 'vue-router';
 
     const route = useRoute()
@@ -8,8 +8,10 @@ import { posts } from '@/posts';
     let id: string = route.params.id as string
 
     let mapost: Post
+
+    let postList = usePostListStore()
     
-    posts.forEach((p)=>{
+    postList.lista.forEach((p)=>{
       if (p.id == id) mapost = p
     })
 
@@ -21,21 +23,19 @@ import { posts } from '@/posts';
 </script>
     
 <template>
-  <div>
-    <p>
-      A <i>sua</i> fonte de informação sobre a <i>nossa</i> entrega.
-    </p>
-  </div>
 
+  <article href="#" class="block w-[40em] p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
 
-  <div class="flex flex-col">
-    <div class="mt-4 p-4  w-[35em]">
-      <div class="font-semibold text-xl">
-        <span class="text-blue-400">v{{ post.versao }}</span> {{ post.titulo }}
-      </div>
-      <div class="pt-2 whitespace-pre-line text-zinc-300">
-        {{ post.conteudo }}
-      </div>
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <span class="text-blue-400">v{{ post.versao }}</span> {{ post.titulo }}
+    </h5>
+
+    <img :src=post.capaPublicacaoLink alt="" class="my-4">
+
+    <div class="font-normal text-gray-700 dark:text-gray-400 whitespace-pre-line">
+      {{ post.conteudo }}
     </div>
-  </div>
+  </article>
+
+
 </template>
