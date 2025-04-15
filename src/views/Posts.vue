@@ -22,6 +22,10 @@ import { storeToRefs } from 'pinia';
   let store = usePostListStore()
   store.getList()
 
+  function linkParaPost(id: string) {
+    return ('/' + id);
+  }
+
 </script>
     
 <template>
@@ -33,15 +37,15 @@ import { storeToRefs } from 'pinia';
     
 
   <div v-for="post in store.lista" class="w-[40em] mb-10 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-    <a :href=post.capaPublicacaoLink>
-        <img class="rounded-t-lg" v-bind:src="post.capaPublicacaoLink" alt="" />
-    </a>
+    
+    <img v-on:click="router.push('/'+post.id);" class="cursor-pointer rounded-t-lg" v-bind:src="post.capaPublicacaoLink" alt="" />
+
     <div class="p-5">
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              <span class="text-blue-400">v{{ post.versao }}</span> {{ post.titulo }}
-            </h5>
-        </a>
+        
+        <h5 v-on:click="router.push('/'+post.id);" class="cursor-pointer mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <span class="text-blue-400">v{{ post.versao }}</span> {{ post.titulo }}
+        </h5>
+        
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ truncarPorPalavras(post.conteudo, 20) }}</p>
         <a v-on:click="router.push('/'+post.id);" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-zinc-800 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Ler mais
