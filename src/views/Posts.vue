@@ -20,31 +20,7 @@ import { storeToRefs } from 'pinia';
   let conteudo: any = null;
 
   let store = usePostListStore()
-
-  let {postList} = storeToRefs(store)
-
-  let posts: Post[] = store.postList
-  
-  fetch(
-    'https://fluighml.rn.sebrae.com.br/fluighub2/rest/service/execute/datasearch',
-    {
-      'method':'POST',
-      'body':JSON.stringify({
-        "endpoint":"dataset",
-        "method":"get",
-        "params":"datasetId=dsNovoChangelog"
-      })
-    }
-  ).then((response)=>{
-    response.json().then((dados)=>{
-      let parsed = JSON.parse(dados.message)
-      let conteudo: Post[] = parsed.values
-
-      conteudo.reverse()
-
-      store.setValue(conteudo)
-    })
-  })
+  store.getList()
 
 </script>
     
@@ -61,21 +37,8 @@ import { storeToRefs } from 'pinia';
       </svg>
       Sugerir melhoria
     </button>
-    
-    <div hidden v-on:click="router.push('/'+post.id)" v-for="post in postList" 
-    class="mt-4 border border-zinc-700 rounded p-4 bg-zinc-800 w-[35em] shadow cursor-pointer" >
-        <div ></div>
-        <img class="w-full bg-slate-400 mb-4" v-bind:src="post.capaPublicacaoLink" alt="">
-        <div class="font-semibold text-xl">
-          <span class="text-blue-400">v{{ post.versao }}</span> {{ post.titulo }}
-        </div>
-        <div class="pt-2 text-zinc-300">
-          {{ truncarPorPalavras(post.conteudo, 20) }}
-        </div>
-      
-    </div>
 
-    <div v-for="post in postList" class="w-[40em] mt-10 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <div v-for="post in store.lista" class="w-[40em] mt-10 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
         <img class="rounded-t-lg" v-bind:src="post.capaPublicacaoLink" alt="" />
     </a>

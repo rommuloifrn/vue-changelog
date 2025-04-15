@@ -2,13 +2,28 @@ import { ref, computed } from 'vue'
 import { defineStore, type Store } from 'pinia'
 import type { Post } from '@/post'
 
-export const usePostListStore = defineStore('postList', () => {
-  const postList = ref<Post[]>([])
-  
-  function setValue(list: Post[]):void {
-    postList.value = list;
-  }
-  
+export const usePostListStore = defineStore('postListStore', {
+  state: () => ({
+    lista: [] as Post[],
+  }),
 
-  return { postList, setValue }
+  actions: {
+    async getList() {
+      const response = await fetch(
+        'https://fluighml.rn.sebrae.com.br/fluighub2/rest/service/execute/datasearch',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            endpoint: 'dataset',
+            method: 'get',
+            params: 'datasetId=dsNovoChangelog'
+          })
+        }
+      )
+      const dados = await response.json()
+      const parsed = JSON.parse(dados.message)
+      this.lista = parsed.values
+      this.lista.reverse()
+    },
+  },
 })
