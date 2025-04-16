@@ -2,26 +2,25 @@
 export default {
   setup() {
     const enviaFormulario = async () => {
-      let params = `{"comment":"Iniciado pelo Changelog","movementSequence":"targetState":6,"asManager":true, "targetAssignee":"romulo.silva",formFields:{"nome":"${(document.getElementById('nome') as HTMLInputElement)!.value}","email":"${(document.getElementById('email') as HTMLInputElement)!.value}","problema":"${(document.getElementById('problema') as HTMLTextAreaElement)!.value}"}}`
+      let params = `{"comment":"Iniciado pelo Changelog","targetAssignee":"romulo.silva","formFields":{"nome":"${(document.getElementById('nome') as HTMLInputElement)!.value}","email":"${(document.getElementById('email') as HTMLInputElement)!.value}","problema":"${(document.getElementById('problema') as HTMLTextAreaElement)!.value}"}}`
 
       console.log(params)
 
       let idHasheadoDoProcesso = 'CLAB/lBzo9ZzJmM6D1KDues8EA6jyWfufXp3NDHcI+I='
-      const formData = new FormData()
-
-      formData.append('endpoint', 'moveprocess')
-      formData.append('method', 'post')
-      formData.append('params', params)
-      formData.append('process', idHasheadoDoProcesso)
-
-      console.log('Dados enviados:', formData)
 
       try {
         let url =
           'https://fluighml.rn.sebrae.com.br/fluighub2/rest/service/execute/movestart-process'
         const response = await fetch(url, {
           method: 'POST',
-          body: formData,
+          body: JSON.stringify(
+            {
+              endpoint: 'start',
+              method: 'post',
+              params: params,
+              process: idHasheadoDoProcesso,
+            }
+          ),
         })
 
         if (response.ok) {
@@ -30,7 +29,9 @@ export default {
           alert('Erro ao enviar a sugestão.')
         }
 
-        console.log('Resposta do servidor:', response)
+        let jeiso = await response.json()
+
+        console.log('Resposta do servidor:', jeiso)
       } catch (error) {
         console.error('Erro:', error)
         alert('Erro ao enviar a sugestão.')
