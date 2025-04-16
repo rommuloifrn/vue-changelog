@@ -4,8 +4,6 @@ export default {
     const enviaFormulario = async () => {
       let params = `{"comment":"Iniciado pelo Changelog","targetAssignee":"romulo.silva","formFields":{"nome":"${(document.getElementById('nome') as HTMLInputElement)!.value}","email":"${(document.getElementById('email') as HTMLInputElement)!.value}","problema":"${(document.getElementById('problema') as HTMLTextAreaElement)!.value}"}}`
 
-      console.log(params)
-
       let idHasheadoDoProcesso = 'CLAB/lBzo9ZzJmM6D1KDues8EA6jyWfufXp3NDHcI+I='
 
       try {
@@ -13,38 +11,23 @@ export default {
           'https://fluighml.rn.sebrae.com.br/fluighub2/rest/service/execute/movestart-process'
         const response = await fetch(url, {
           method: 'POST',
-          body: JSON.stringify(
-            {
-              endpoint: 'start',
-              method: 'post',
-              params: params,
-              process: idHasheadoDoProcesso,
-            }
-          ),
+          body: JSON.stringify({
+            endpoint: 'start',
+            method: 'post',
+            params: params,
+            process: idHasheadoDoProcesso,
+          }),
         })
 
-        if (response.ok) {
-          alert('Sugestão enviada com sucesso!')
-        } else {
-          alert('Erro ao enviar a sugestão.')
-        }
-
-        let jeiso = await response.json()
-
-        console.log('Resposta do servidor:', jeiso)
+        if (!response.ok) alert('Erro ao enviar a sugestão, status: ' + response.status)
+        
       } catch (error) {
-        console.error('Erro:', error)
-        alert('Erro ao enviar a sugestão.')
+        alert('Erro ao enviar a sugestão:' + error)
       }
-    }
-    const trataEnvio = () => {
-      console.log('jéfizo')
-
-      enviaFormulario()
     }
 
     return {
-      trataEnvio,
+      enviaFormulario,
     }
   },
 }
@@ -89,7 +72,7 @@ export default {
           </button>
         </div>
         <!-- Modal body -->
-        <form class="p-4 md:p-5" @submit.prevent="trataEnvio">
+        <form class="p-4 md:p-5" @submit.prevent="enviaFormulario">
           <div class="grid gap-4 mb-4 grid-cols-2">
             <div class="col-span-2">
               <label for="nome" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
