@@ -188,7 +188,7 @@ import SugestaoModal from './components/SugestaoModal.vue';
         </svg>
       </div>
     </div>
-    <hr class="text-slate-600" />
+    <hr class="text-slate-600 mb-[5em]" />
   
 
   <RouterView />
