@@ -15,7 +15,6 @@ function truncarPorPalavras(texto: string, n: number): string {
 
 let router = useRouter()
 
-let conteudo: any = null
 
 let store = usePostListStore()
 store.getList()
@@ -26,12 +25,21 @@ function linkParaPost(id: string) {
 </script>
 
 <template>
-  {{ conteudo }}
 
-  <div class="flex flex-col mt-10">
+
+  <form class="max-w-sm block w-60">
+  <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ordenar</label>
+  <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+    <option selected value="US">Mais recentes primeiro</option>
+    <option value="CA">Mais antigos primeiro</option>
+  </select>
+</form>
+
+  <div class="flex flex-col mt-10 ">
     <div
       v-for="post in store.lista"
-      class="w-[40em] mb-10 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+      class="w-[60em] mb-10 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
     >
       <img
         v-on:click="router.push('/' + post.id)"
